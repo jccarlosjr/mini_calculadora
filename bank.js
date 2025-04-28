@@ -139,15 +139,6 @@ function portQualibanking(data){
     }
 }
 
-
-function imgHandler(o, i){
-    if(o){
-        i.classList.remove("disable-image");
-        i.classList.add("enable-image");
-    }
-}
-
-
 function getRate(amountFinanced, installment, terms) {
     /**
      * Calculate the loan rate based on the amount financed, installment, and terms.
@@ -197,6 +188,20 @@ function getRate(amountFinanced, installment, terms) {
     return defaultValue; // Return the default rate if the desired precision is not achieved
 }
 
+function imgHandler(o, i){
+    if(o){
+        i.classList.remove("disable-image");
+        i.classList.add("enable-image");
+    }
+}
+
+
+function disableImg(i){
+    i.classList.remove("enable-image");
+    i.classList.add("disable-image");
+}
+
+
 document.getElementById("getPort").addEventListener("click", () => {
     const data = getData();
     let op_c6 = portC6(data);
@@ -207,6 +212,10 @@ document.getElementById("getPort").addEventListener("click", () => {
     let factaImg = document.getElementById("facta-img");
     let finantoImg = document.getElementById("finanto-img");
     let qualibankingImg = document.getElementById("qualibanking-img");
+    disableImg(c6Img);
+    disableImg(factaImg);
+    disableImg(finantoImg);
+    disableImg(qualibankingImg);
     imgHandler(op_c6, c6Img);
     imgHandler(op_facta, factaImg);
     imgHandler(op_finanto, finantoImg);
